@@ -15,10 +15,16 @@ RUN apt-get install -y ros-$ROS_DISTRO-dbw-mkz
 RUN apt-get upgrade -y
 # end installing Dataspeed DBW
 
+RUN apt-get install net-tools -y
+RUN apt-get install vim -y
+
 # install python packages
 RUN apt-get install -y python-pip
-RUN pip install --upgrade pip
+RUN pip install  pip==20.3.4
 COPY requirements.txt ./requirements.txt
+#RUN pip install typing
+RUN pip install importlib==1.0.4
+RUN pip install Markdown==3.1.1
 RUN pip install -r requirements.txt
 
 # install required ros dependencies
